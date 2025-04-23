@@ -6,7 +6,7 @@ A real-time, multiplayer game lobby backend built with **Spring Boot**, **WebSoc
 
 ## 🚀 Features
 
-- 🔐 JWT-based user authentication
+- 🔐 JWT-based user authentication using keycloak
 - 🧑‍🤝‍🧑 Create, join, and leave game lobbies
 - 🔄 Real-time player updates via WebSockets (SockJS + STOMP)
 - 💬 In-lobby chat system
