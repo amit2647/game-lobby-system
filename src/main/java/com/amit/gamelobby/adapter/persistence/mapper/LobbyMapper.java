@@ -4,6 +4,7 @@ import com.amit.gamelobby.adapter.persistence.entity.LobbyEntity;
 import com.amit.gamelobby.domain.model.Lobby;
 import com.amit.gamelobby.domain.model.Player;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class LobbyMapper {
@@ -44,7 +45,7 @@ public class LobbyMapper {
         entity.setCreatedAt(domain.getCreatedAt());
         entity.setUpdatedAt(domain.getUpdatedAt());
 
-        List<String> playerIds = domain
+        List<UUID> playerIds = domain
             .getPlayers()
             .stream()
             .map(Player::getId)

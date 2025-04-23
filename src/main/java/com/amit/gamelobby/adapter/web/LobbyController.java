@@ -25,7 +25,6 @@ public class LobbyController {
     public ResponseEntity<LobbyResponse> createLobby(
         @RequestBody CreateLobby request
     ) {
-        System.out.println("Enter the CreateLobby");
         Lobby lobby = lobbyUseCase.createLobby(
             request.getName(),
             request.getMaxPlayers()

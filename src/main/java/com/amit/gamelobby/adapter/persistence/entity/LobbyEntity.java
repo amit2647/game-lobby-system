@@ -34,7 +34,8 @@ public class LobbyEntity {
         name = "lobby_players",
         joinColumns = @JoinColumn(name = "lobby_id")
     )
-    private List<String> players = new ArrayList<>();
+    @Column(name = "player_id")
+    private List<UUID> players = new ArrayList<>();
 
     @Column
     private boolean gameStarted = false;
@@ -71,11 +72,11 @@ public class LobbyEntity {
         this.maxPlayers = maxPlayers;
     }
 
-    public List<String> getPlayers() {
+    public List<UUID> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<String> players) {
+    public void setPlayers(List<UUID> players) {
         this.players = players;
     }
 

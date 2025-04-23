@@ -1,4 +1,4 @@
-package com.amit.gamelobby.adapter.persistence;
+package com.amit.gamelobby.adapter.persistence.repository.lobbyrepository;
 
 import com.amit.gamelobby.adapter.persistence.entity.LobbyEntity;
 import com.amit.gamelobby.adapter.persistence.mapper.LobbyMapper;
@@ -21,7 +21,6 @@ public class JpaLobbyRepository implements LobbyRepositoryPort {
 
     @Override
     public Lobby save(Lobby lobby) {
-        System.out.println("Enter the Jpa Lobby Repository save");
         LobbyEntity entity = LobbyMapper.toEntity(lobby);
         LobbyEntity saved = repository.save(entity);
         return LobbyMapper.toDomain(saved);

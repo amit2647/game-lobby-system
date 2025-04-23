@@ -11,7 +11,7 @@ public class LobbyResponse {
     private UUID lobbyId;
     private String name;
     private int maxPlayers;
-    private List<String> players;
+    private List<UUID> players;
     private boolean gameStarted;
     private ZonedDateTime createdAt;
     private ZonedDateTime updatedAt;
@@ -56,11 +56,11 @@ public class LobbyResponse {
         this.maxPlayers = maxPlayers;
     }
 
-    public List<String> getPlayers() {
+    public List<UUID> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<String> players) {
+    public void setPlayers(List<UUID> players) {
         this.players = players;
     }
 

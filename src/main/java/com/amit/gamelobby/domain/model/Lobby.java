@@ -24,7 +24,6 @@ public class Lobby {
 
     // Full constructor used when loading from DB or mapping
     public Lobby(UUID lobbyId, String name, int maxPlayers) {
-        System.out.println("Lobby constructor creating object");
         this.lobbyId = lobbyId;
         this.name = name;
         this.maxPlayers = maxPlayers;

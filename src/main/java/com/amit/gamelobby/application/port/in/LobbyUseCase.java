@@ -8,9 +8,9 @@ import java.util.UUID;
 public interface LobbyUseCase {
     Lobby createLobby(String name, int maxPlayers);
 
-    Optional<Lobby> joinLobby(UUID lobbyId, String player);
+    Optional<Lobby> joinLobby(UUID lobbyId, UUID player);
 
-    Optional<Lobby> leaveLobby(UUID lobbyId, String player);
+    Optional<Lobby> leaveLobby(UUID lobbyId, UUID player);
 
     List<Lobby> getAllLobbies();
 

@@ -1,4 +1,4 @@
-package com.amit.gamelobby.adapter.persistence;
+package com.amit.gamelobby.adapter.persistence.repository.lobbyrepository;
 
 import com.amit.gamelobby.adapter.persistence.entity.LobbyEntity;
 import java.util.UUID;

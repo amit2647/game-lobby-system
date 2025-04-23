@@ -1,49 +1,46 @@
-package com.amit.gamelobby.domain.model;
+package com.amit.gamelobby.adapter.persistence.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.ZonedDateTime;
-import java.util.Objects;
 import java.util.UUID;
 
-public class Player {
+@Table(name = "player")
+@Entity
+public class PlayerEntity {
 
-    private final UUID playerId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(nullable = false)
+    private UUID playerId;
+
+    @Column
     private String playerName;
+
+    @Column
     private String email;
+
+    @Column
     private String password;
+
+    @Column
     private ZonedDateTime createdAt;
+
+    @Column
     private ZonedDateTime updatedAt;
 
-    public Player(UUID playerId) {
-        this.playerId = playerId;
-    }
-
-    public Player(String playerName, String email, String password) {
-        this.playerId = null;
-        this.playerName = playerName;
-        this.email = email;
-        this.password = password;
-    }
-
-    public Player(
-        UUID playerId,
-        String playerName,
-        String email,
-        String password
-    ) {
-        this.playerId = playerId;
-        this.playerName = playerName;
-        this.email = email;
-        this.password = password;
-        this.createdAt = ZonedDateTime.now();
-        this.updatedAt = ZonedDateTime.now();
-    }
-
-    public UUID getId() {
-        return playerId;
-    }
+    // getter and setter
 
     public UUID getPlayerId() {
         return playerId;
+    }
+
+    public void setPlayerId(UUID playerId) {
+        this.playerId = playerId;
     }
 
     public String getPlayerName() {
@@ -86,19 +83,10 @@ public class Player {
         this.updatedAt = updatedAt;
     }
 
-    // Use for comparisons in removePlayer
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Player)) return false;
-        Player player = (Player) o;
-        return Objects.equals(playerId, player.playerId);
-    }
-
     @Override
     public String toString() {
         return (
-            "Player{" +
+            "PlayerEntity{" +
             "playerId=" +
             playerId +
             ", playerName='" +
@@ -107,7 +95,7 @@ public class Player {
             ", email='" +
             email +
             '\'' +
-            ",password=" +
+            ", pasword='" +
             password +
             '\'' +
             ", createdAt=" +
@@ -116,10 +104,5 @@ public class Player {
             updatedAt +
             '}'
         );
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(playerId);
     }
 }

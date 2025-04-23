@@ -26,13 +26,12 @@ public class LobbyService implements LobbyUseCase {
                 "maxPlayers should be greater than 0"
             );
         }
-        System.out.println("Enter the lobby service createLobby");
         Lobby lobby = new Lobby(name, maxPlayers);
         return lobbyRepository.save(lobby);
     }
 
     @Override
-    public Optional<Lobby> joinLobby(UUID lobbyId, String playerId) {
+    public Optional<Lobby> joinLobby(UUID lobbyId, UUID playerId) {
         Optional<Lobby> lobbyOpt = lobbyRepository.findById(lobbyId);
         if (lobbyOpt.isPresent()) {
             Lobby lobby = lobbyOpt.get();
@@ -48,7 +47,7 @@ public class LobbyService implements LobbyUseCase {
     }
 
     @Override
-    public Optional<Lobby> leaveLobby(UUID lobbyId, String playerId) {
+    public Optional<Lobby> leaveLobby(UUID lobbyId, UUID playerId) {
         Optional<Lobby> lobbyOpt = lobbyRepository.findById(lobbyId);
         if (lobbyOpt.isPresent()) {
             Lobby lobby = lobbyOpt.get();
