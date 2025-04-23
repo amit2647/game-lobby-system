@@ -1,5 +1,7 @@
 package com.amit.gamelobby.domain.model;
 
+import com.amit.gamelobby.domain.exception.EmptyLobbyException;
+import com.amit.gamelobby.domain.exception.LobbyFullException;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +65,7 @@ public class Lobby {
     // Behavior...
     public void addPlayer(Player player) {
         if (players.size() >= maxPlayers) {
-            throw new IllegalStateException("Lobby is full.");
+            throw new LobbyFullException("Lobby is full.");
         }
         players.add(player);
         updatedAt = ZonedDateTime.now();
@@ -76,9 +78,7 @@ public class Lobby {
 
     public void startGame() {
         if (players.isEmpty()) {
-            throw new IllegalStateException(
-                "Cannot start game with no players."
-            );
+            throw new EmptyLobbyException("Cannot start game with no players.");
         }
         gameStarted = true;
         updatedAt = ZonedDateTime.now();
