@@ -1,12 +1,24 @@
 # Hexagonal Architecture
-- Hexagonal Architecture is model designing software application around the domain layer to isolate it from external factors.
---Domain layer contains the bussiness logic of the application. domain layer is exposed using ports and adapters .
---Ports are the entry point to the application . Port determines interface which will allow actor to communicate with application
---Adapters initiate the intercation with application through ports using specific technology . In our project REST Controller which allows client to communicate
-with appplication.
 
+Hexagonal Architecture is a software design pattern that centers the application around the **domain layer**, isolating it from external systems such as databases, UI, or messaging platforms.
 
-- Architecture layer :
+## Key Concepts
+
+- **Domain Layer**:
+  Contains the business logic of the application. It is exposed via **ports** and **adapters**.
+
+- **Ports**:
+  Define interfaces that allow actors to communicate with the application. These serve as entry points or exit points, depending on the context.
+
+- **Adapters**:
+  Use specific technologies (like REST, messaging, or databases) to interact with the application via ports.
+
+In our project:
+
+- A **REST controller** acts as a **driving adapter**, allowing the client to communicate with the application.
+
+## Architecture Diagram (Textual)
+
 ```
     Adapter -> port -> ( application layer (Domain Layer) application layer ) -> port -> Adapter
 
@@ -14,27 +26,43 @@ with appplication.
     - Driving Adapter , port IN                      - Driven Adapter , port In
 ```
 
-- Hexagonal Architecture has 2 sides . Driving Side & Driven Side
+## Driving Side vs. Driven Side
 
--- Driving Side : From Driving side Driving actors initiate the interaction, driving adapter could be a controller which takes user input and pass it to port In.
--- Driven Side : From Driven Side Driven actors are "kicked by behaviour" by application . Driven adapter could be database adapter that is called by application .
+- **Driving Side**:
 
--- In project structure we have :
-  - Adapter layer: adapter layer which contains all the spring related code
-  - Application layer : it contains services and ports which are used to communicate which application.
-    -- Ports : 2 Ports -> Port.In & Port.Out
-    --e.g :
-    --- Port.In : communicate with controller , expose use case methods to controller or adapter layer.
-    --- Port.Out : communicate with database , expose the methods to the database adapters
+  - Driving actors initiate the interaction.
+  - Example: A controller taking user input and sending it to a `Port In`.
 
-  - Domain Layer : Core bussiness logic is implemented in this layer which leaves the User interface and Infracture layer outside .
+- **Driven Side**:
+  - Driven actors are triggered by the application.
+  - Example: A database adapter called by the application via a `Port Out`.
 
-- Advantage :
-  Clean separation of concerns
-  Highly testable and scalable
-  Framework-agnostic core logic
-  Great for real-time and modular systems
+## Project Structure
 
-- Disadvantage :
-  Slightly steeper learning curve
-  More boilerplate (interfaces and adapters)
+- **Adapter Layer**:
+
+  - Contains all Spring-related code and infrastructure-related adapters.
+
+- **Application Layer**:
+
+  - Contains services and ports used to communicate within the application.
+
+  - **Ports**:
+    - `Port In`: Interfaces exposed to controllers or other driving adapters to initiate use cases.
+    - `Port Out`: Interfaces used to communicate with external systems like databases or messaging systems.
+
+- **Domain Layer**:
+  - Contains the core business logic.
+  - Keeps the domain isolated from the UI and infrastructure layers.
+
+## Advantages
+
+- Clean separation of concerns
+- Highly testable and scalable
+- Framework-agnostic core logic
+- Great for real-time and modular systems
+
+## Disadvantages
+
+- Slightly steeper learning curve
+- More boilerplate (interfaces and adapters)
