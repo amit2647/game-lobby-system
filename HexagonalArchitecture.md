@@ -1,4 +1,4 @@
-#Hexagonal Architecture
+# Hexagonal Architecture
 - Hexagonal Architecture is model designing software application around the domain layer to isolate it from external factors.
 --Domain layer contains the bussiness logic of the application. domain layer is exposed using ports and adapters .
 --Ports are the entry point to the application . Port determines interface which will allow actor to communicate with application
