@@ -9,4 +9,5 @@ public interface PlayerUseCase {
     Player createPlayer(String playerName, String email, String password);
     List<Player> getAllLobbies();
     Optional<Player> getPlayerById(UUID PlayerId);
+    void deleteById(UUID PlayerId);
 }

@@ -36,4 +36,9 @@ public class PlayerService implements PlayerUseCase {
     public List<Player> getAllLobbies() {
         return PlayerRepository.findAll();
     }
+
+    @Override
+    public void deleteById(UUID id) {
+        PlayerRepository.deleteById(id);
+    }
 }

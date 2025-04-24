@@ -8,6 +8,7 @@ import com.amit.gamelobby.dto.PlayerAction;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,5 +74,11 @@ public class LobbyController {
             .map(LobbyResponse::fromDomain)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping
+    public ResponseEntity<String> deleleLobby(@PathVariable UUID lobbyId) {
+        lobbyUseCase.deleteById(lobbyId);
+        return new ResponseEntity<String>("Lobby deleted", HttpStatus.OK);
     }
 }

@@ -107,9 +107,6 @@ public class Player {
             ", email='" +
             email +
             '\'' +
-            ",password=" +
-            password +
-            '\'' +
             ", createdAt=" +
             createdAt +
             ", updatedAt=" +

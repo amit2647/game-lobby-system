@@ -15,4 +15,6 @@ public interface LobbyUseCase {
     List<Lobby> getAllLobbies();
 
     Optional<Lobby> getLobbyById(UUID lobbyId);
+
+    void deleteById(UUID lobbyId);
 }

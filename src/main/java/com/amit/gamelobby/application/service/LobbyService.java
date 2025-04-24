@@ -66,4 +66,9 @@ public class LobbyService implements LobbyUseCase {
     public List<Lobby> getAllLobbies() {
         return lobbyRepository.findAll();
     }
+
+    @Override
+    public void deleteById(UUID id) {
+        lobbyRepository.deleteById(id);
+    }
 }

@@ -7,6 +7,7 @@ import com.amit.gamelobby.dto.PlayerResponse;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,6 @@ public class PlayerController {
     public ResponseEntity<PlayerResponse> createPlayer(
         @RequestBody CreatePlayer request
     ) {
-        System.out.println("CreatePlayer obj: " + request);
         Player Player = PlayerUseCase.createPlayer(
             request.getPlayerName(),
             request.getEmail(),
@@ -50,5 +50,11 @@ public class PlayerController {
             .map(PlayerResponse::fromDomain)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping
+    public ResponseEntity<String> deletePlayer(@PathVariable UUID PlayerId) {
+        PlayerUseCase.deleteById(PlayerId);
+        return new ResponseEntity<String>("Player Deleted", HttpStatus.OK);
     }
 }
