@@ -51,3 +51,6 @@ target
 
 #logs
 /logs
+
+#controller
+/home/amit/Projects/game-lobby-system/src/main/java/com/amit/gamelobby/adapter/web/EndpointListingController.java
